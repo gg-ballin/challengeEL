@@ -267,7 +267,7 @@
 		};
 		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -466,6 +466,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CPCXQCCFL4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = challengeEL/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -493,6 +494,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = CPCXQCCFL4;
 				INFOPLIST_FILE = challengeEL/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
