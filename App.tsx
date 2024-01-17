@@ -5,10 +5,15 @@
  * @format
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 
 function App(): React.JSX.Element {
+  useEffect(() => {
+    SplashScreen.hide();
+  }, []);
+
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Text style={{color: 'white'}}>Hola</Text>

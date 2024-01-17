@@ -80,3 +80,4 @@ To learn more about React Native, take a look at the following resources:
 
 ### Common errors and how to tackle them
 Android Gradle plugin requires Java 17 to run. You are currently using Java 15.
+
