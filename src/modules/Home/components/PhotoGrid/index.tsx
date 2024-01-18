@@ -4,6 +4,7 @@ import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 import {ImageData, selectedImage} from '../../../../redux/slices/imageSlice';
+import {isAndroid} from '../../../../utils/constants';
 
 interface PhotoGridProps {
   paths: ImageData[];
@@ -33,7 +34,12 @@ const PhotoGrid = ({paths}: PhotoGridProps) => {
           key={index}
           style={styles.frameBtn}
           onPress={() => handleImagePress(imageData)}>
-          <Image source={{uri: imageData.path}} style={styles.image} />
+          <Image
+            source={{uri: imageData.path}}
+            style={
+              isAndroid ? [styles.image, styles.rotationAndroid] : styles.image
+            }
+          />
         </TouchableOpacity>
       ))}
     </View>

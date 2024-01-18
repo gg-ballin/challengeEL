@@ -24,6 +24,7 @@ const HomeScreen = ({navigation}: StackScreenComponent) => {
         <PhotoGrid paths={paths} />
         <Button
           title="Take Picture"
+          disabled={paths.length >= 9}
           onPress={() => navigation.navigate('CameraViewStack')}
         />
       </View>

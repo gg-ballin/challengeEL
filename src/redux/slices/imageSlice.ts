@@ -9,11 +9,13 @@ export type ImageData = {
 type ImageState = {
   paths: ImageData[];
   imageSelected: ImageData | null;
+  limitReached: boolean;
 };
 
 const initialState: ImageState = {
   paths: [],
   imageSelected: null,
+  limitReached: false,
 };
 
 const imageSlice = createSlice({
@@ -28,6 +30,9 @@ const imageSlice = createSlice({
         data => data.path === action.payload,
       );
       state.imageSelected = selectedImageData || null;
+    },
+    hasLimitReached: state => {
+      state.limitReached = true;
     },
   },
 });

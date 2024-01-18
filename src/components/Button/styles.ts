@@ -8,9 +8,15 @@ export default StyleSheet.create({
     borderRadius: 10,
     marginBottom: 35,
   },
+  containerDisabled: {
+    backgroundColor: colors.gray,
+    padding: 20,
+    borderRadius: 10,
+    marginBottom: 35,
+  },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
     color: colors.white,
-  }
+  },
 });

@@ -14,6 +14,7 @@ import {addPhoto} from '../../../../redux/slices/imageSlice';
 import Geolocation, {
   GeolocationResponse,
 } from '@react-native-community/geolocation';
+import {isAndroid} from '../../../../utils/constants';
 
 type CameraViewProps = {
   navigation: NativeStackNavigationProp<
@@ -52,7 +53,7 @@ const CameraView = ({navigation}: CameraViewProps) => {
           );
         });
       const photoData = {
-        path: photo.path,
+        path: isAndroid ? `file://${photo.path}` : photo.path,
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
       };
