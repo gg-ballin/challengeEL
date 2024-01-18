@@ -6,38 +6,28 @@
  */
 
 import React, {useEffect} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
 import SplashScreen from 'react-native-splash-screen';
+import {useCameraPermission} from 'react-native-vision-camera';
+import AppNavigator from './src/navigation/Stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {Provider} from 'react-redux';
+import store from './src/redux/store';
 
 function App(): React.JSX.Element {
+  const {hasPermission, requestPermission} = useCameraPermission();
   useEffect(() => {
     SplashScreen.hide();
-  }, []);
-
+    if (!hasPermission) {
+      requestPermission();
+    }
+  }, [hasPermission, requestPermission]);
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text style={{color: 'white'}}>Hola</Text>
-    </View>
+    <Provider store={store}>
+      <NavigationContainer>
+        <AppNavigator />
+      </NavigationContainer>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;
