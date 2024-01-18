@@ -19,15 +19,18 @@ export default StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: '80%',
+    height: '75%',
+  },
+  rotationAndroid: {
+    transform: [{rotate: '90deg'}],
   },
   latLon: {
-    marginTop: 20,
+    marginVertical: 20,
   },
   txtLatLon: {
     fontSize: 20,
     fontWeight: 'bold',
     color: colors.secondary,
     textAlign: 'left',
-  }
+  },
 });

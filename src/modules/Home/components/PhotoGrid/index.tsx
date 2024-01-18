@@ -1,10 +1,13 @@
 import React from 'react';
 import {View, Image, TouchableOpacity} from 'react-native';
-import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
+
 import {ImageData, selectedImage} from '../../../../redux/slices/imageSlice';
+
 import {isAndroid} from '../../../../utils/constants';
+
+import styles from './styles';
 
 interface PhotoGridProps {
   paths: ImageData[];
@@ -16,7 +19,6 @@ interface RenderRowProps {
 }
 
 const PhotoGrid = ({paths}: PhotoGridProps) => {
-  console.log('paths: ', paths);
   const limitedPaths = paths.slice(0, 9);
   const numRows = Math.ceil(limitedPaths.length / 3);
   const navigation = useNavigation();

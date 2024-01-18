@@ -1,10 +1,5 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
-// export type StackScreenParams = {
-//   HomeStack: undefined;
-//   ImageDetailStack: undefined;
-//   CameraViewStack: undefined;
-// };
 export type HomeStackScreenParams = {
   HomeStack: undefined;
 };

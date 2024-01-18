@@ -1,27 +1,22 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
-import styles from './styles';
-import {CameraViewStackParamList} from '../../Stack';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useDispatch} from 'react-redux';
 import {
   Camera,
   useCameraDevice,
   useCameraPermission,
 } from 'react-native-vision-camera';
-import Button from '../../../../components/Button';
-import {useDispatch} from 'react-redux';
-import {addPhoto} from '../../../../redux/slices/imageSlice';
 import Geolocation, {
   GeolocationResponse,
 } from '@react-native-community/geolocation';
-import {isAndroid} from '../../../../utils/constants';
 
-type CameraViewProps = {
-  navigation: NativeStackNavigationProp<
-    CameraViewStackParamList,
-    'CameraViewStack'
-  >;
-};
+import {addPhoto} from '../../../../redux/slices/imageSlice';
+
+import Button from '../../../../components/Button';
+
+import {isAndroid} from '../../../../utils/constants';
+import {CameraViewProps} from '../../types';
+import styles from './styles';
 
 const CameraView = ({navigation}: CameraViewProps) => {
   const {hasPermission, requestPermission} = useCameraPermission();
@@ -58,8 +53,6 @@ const CameraView = ({navigation}: CameraViewProps) => {
         longitude: position.coords.longitude,
       };
       dispatch(addPhoto(photoData));
-      console.log('photoData: ', photoData);
-      Geolocation.getCurrentPosition(info => console.log(info));
       navigation.goBack();
     } catch (e) {
       console.log(e);
