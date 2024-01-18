@@ -3,33 +3,37 @@ import {View, Image, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
-import {selectedImage} from '../../../../redux/slices/imageSlice';
+import {ImageData, selectedImage} from '../../../../redux/slices/imageSlice';
 
 interface PhotoGridProps {
-  paths: string[];
+  paths: ImageData[];
 }
 
 interface RenderRowProps {
-  rowPaths: string[];
+  rowPaths: ImageData[];
   rowIndex: number;
 }
 
 const PhotoGrid = ({paths}: PhotoGridProps) => {
+  console.log('paths: ', paths);
   const limitedPaths = paths.slice(0, 9);
   const numRows = Math.ceil(limitedPaths.length / 3);
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  const handleImagePress = (path: string) => {
-    console.log('path: ', path)
-    dispatch(selectedImage(path));
+  const handleImagePress = (imageData: ImageData) => {
+    dispatch(selectedImage(imageData.path));
     navigation.navigate('ImageDetailStack');
   };
+
   const renderRow = ({rowPaths, rowIndex}: RenderRowProps) => (
     <View key={rowIndex} style={styles.row}>
-      {rowPaths.map((path, index) => (
-        <TouchableOpacity style={styles.frameBtn} onPress={() => handleImagePress(path)}>
-          <Image key={index} source={{uri: path}} style={styles.image} />
+      {rowPaths.map((imageData, index) => (
+        <TouchableOpacity
+          key={index}
+          style={styles.frameBtn}
+          onPress={() => handleImagePress(imageData)}>
+          <Image source={{uri: imageData.path}} style={styles.image} />
         </TouchableOpacity>
       ))}
     </View>

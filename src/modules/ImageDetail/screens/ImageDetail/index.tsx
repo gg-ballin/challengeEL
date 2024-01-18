@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, SafeAreaView, Image} from 'react-native';
+import {View, SafeAreaView, Image, Text} from 'react-native';
 import styles from './styles';
 import {useSelector} from 'react-redux';
 import Header from '../../../../components/Header';
@@ -21,12 +21,19 @@ const ImageDetail = ({navigation}: ImageDetailProps) => {
       <Header title="Selected Image" goBack={() => navigation.goBack()} />
       <View style={styles.container}>
         {imageSelected && (
-          <Image
-            style={styles.image}
-            source={{
-              uri: imageSelected,
-            }}
-          />
+          <View style={styles.containerImg}>
+            <Image
+              style={styles.image}
+              resizeMode="contain"
+              source={{
+                uri: imageSelected.path,
+              }}
+            />
+            <View style={styles.latLon}>
+              <Text style={styles.txtLatLon}>latitude: {imageSelected.latitude}</Text>
+              <Text style={styles.txtLatLon}>longitude: {imageSelected.longitude}</Text>
+            </View>
+          </View>
         )}
       </View>
     </>

@@ -9,10 +9,25 @@ export default StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#fff',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+  },
+  containerImg: {
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+    backgroundColor: '#fff',
   },
   image: {
     width: '100%',
-    height: '100%',
+    height: '80%',
   },
+  latLon: {
+    marginTop: 20,
+  },
+  txtLatLon: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: colors.secondary,
+    textAlign: 'left',
+  }
 });
